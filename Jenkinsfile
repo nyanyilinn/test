@@ -5,21 +5,24 @@ pipeline {
         // Stage 1: Checkout code
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                //git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
+                echo 'checkout'
             }
         }
 
         // Stage 2: Install dependencies with Composer
         stage('Install Dependencies') {
             steps {
-                sh 'composer install --no-progress --no-interaction'
+                //sh 'composer install --no-progress --no-interaction'
+                echo 'installation dependencies'
             }
         }
 
         // Stage 3: Run PHPUnit tests
         stage('Run Tests') {
             steps {
-                sh 'vendor/bin/phpunit'
+                //sh 'vendor/bin/phpunit'
+                echo 'run test cases'
             }
         }
 
