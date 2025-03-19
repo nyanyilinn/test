@@ -4,23 +4,24 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/nyanyilinn/test.git'
+                // Clone the GitHub repository
+                git branch: 'master', url: 'https://github.com/nyanyilinn/test.git'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'D:\\xampp\\php\\php.exe '
-                // Or use 'sh' for Linux/Mac:
-                // sh '/opt/lampp/bin/php /opt/lampp/htdocs/your-project/tests/run-tests.php'
+                // Run PHP tests (if any)
+                bat 'D:\\xampp\\php\\php.exe D:\\xampp\\htdocs\\testing\\tests\\run-tests.php'
+                // Replace the path above with the actual path to your PHP test script
             }
         }
 
         stage('Deploy') {
             steps {
-                bat 'xcopy D:\\xampp\\htdocs\\testing\\* D:\\xampp\\htdocs\\testing\\ /E /H /C /I'
-                // Or use 'sh' for Linux/Mac:
-                // sh 'cp -r /path/to/your/project/* /opt/lampp/htdocs/your-project/'
+                // Copy files from the Jenkins workspace to the XAMPP htdocs directory
+                bat 'xcopy "D:\\xampp\\htdocs\\testing\\*" "D:\\xampp\\htdocs\\testing\\" /E /H /C /I /Y'
+                // The /Y flag suppresses prompting to confirm overwriting files
             }
         }
     }
