@@ -10,7 +10,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'C:\\xampp\\php\\php.exe '
+                bat 'D:\\xampp\\php\\php.exe '
                 // Or use 'sh' for Linux/Mac:
                 // sh '/opt/lampp/bin/php /opt/lampp/htdocs/your-project/tests/run-tests.php'
             }
