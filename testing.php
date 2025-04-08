@@ -1,3 +1,3 @@
 <?php
-echo "Somehting changed to repo!";
+echo "Somehting updated.";
 ?>
